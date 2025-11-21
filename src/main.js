@@ -30,7 +30,7 @@ function getPlaceholder(width, height, label) {
 function renderPlaceholderOverlay(label) {
     return `
     <div class="placeholder-overlay">
-        <span class="text-[var(--theme-accent)] mb-2">[ REPLACE ME ]</span>
+        <span class="text-theme-accent mb-2">[ REPLACE ME ]</span>
         <span class="font-bold text-stone-600 dark:text-stone-400">${label}</span>
     </div>`;
 }
@@ -427,7 +427,7 @@ function renderHome() {
                     </div>
 
                     <div class="pt-8">
-                        <button onclick="router.navigate('work')" class="group relative inline-flex items-center gap-3 px-8 py-4 border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-stone-100 text-xs font-bold uppercase tracking-widest hover:border-[var(--theme-accent)] hover:text-[var(--theme-accent)] transition-all">
+                        <button onclick="router.navigate('work')" class="group relative inline-flex items-center gap-3 px-8 py-4 border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-stone-100 text-xs font-bold uppercase tracking-widest hover:border-retro-red dark:hover:border-bright-yellow hover:text-retro-red dark:hover:text-bright-yellow transition-all">
                             <span>Explore Work</span>
                             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -437,18 +437,18 @@ function renderHome() {
                 <div class="animate-fade-up delay-200">
                     <div class="flex items-center justify-between mb-12 border-b border-stone-100 dark:border-stone-800 pb-4">
                         <h3 class="text-sm font-bold uppercase tracking-widest text-stone-900 dark:text-stone-100">Selected Projects</h3>
-                        <a onclick="router.navigate('work')" class="text-xs font-bold uppercase tracking-widest text-stone-400 hover:text-[var(--theme-accent)] cursor-pointer transition-colors">View All</a>
+                        <a onclick="router.navigate('work')" class="text-xs font-bold uppercase tracking-widest text-stone-400 hover:text-retro-red dark:hover:text-bright-yellow cursor-pointer transition-colors">View All</a>
                     </div>
                     
                     <div class="grid grid-cols-1 gap-4">
                         ${featuredWorks.map(p => `
                             <div onclick="router.navigate('project', {id: ${p.id}})" class="group flex items-center justify-between p-6 border border-transparent hover:border-stone-100 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-900 cursor-pointer transition-all duration-500">
                                 <div>
-                                    <h4 class="text-2xl font-bold text-stone-900 dark:text-stone-100 group-hover:text-[var(--theme-accent)] transition-colors">${p.title}</h4>
+                                    <h4 class="text-2xl font-bold text-stone-900 dark:text-stone-100 group-hover:text-retro-red dark:group-hover:text-bright-yellow transition-colors">${p.title}</h4>
                                     <p class="text-sm text-stone-400 mt-1">${p.category}</p>
                                 </div>
                                 <div class="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500">
-                                    <i data-lucide="arrow-right" class="text-[var(--theme-accent)] w-6 h-6"></i>
+                                    <i data-lucide="arrow-right" class="text-theme-accent w-6 h-6"></i>
                                 </div>
                             </div>
                         `).join('')}
@@ -481,7 +481,7 @@ function renderProjectCard(p) {
                     <div class="w-full aspect-[16/10] ${p.color} dark:bg-stone-900 relative overflow-hidden border border-stone-100 dark:border-stone-800">
                        <img src="${p.heroImage}" alt="${p.title}" class="w-full h-full object-cover grayscale opacity-90 dark:opacity-70" />
                        <div class="placeholder-overlay">
-                            <span class="text-[var(--theme-accent)] mb-2">[ REPLACE ME ]</span>
+                            <span class="text-theme-accent mb-2">[ REPLACE ME ]</span>
                             <span class="font-bold text-stone-600 dark:text-stone-400">${p.title} Cover</span>
                         </div>
                     </div>
@@ -489,14 +489,14 @@ function renderProjectCard(p) {
                 <div class="md:col-span-5 order-1 md:order-2 space-y-6">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block mb-2">${p.category}</span>
-                        <h3 class="text-4xl font-bold text-stone-900 dark:text-stone-100 group-hover:text-[var(--theme-accent)] transition-colors duration-300">${p.title}</h3>
+                        <h3 class="text-4xl font-bold text-stone-900 dark:text-stone-100 group-hover:text-retro-red dark:group-hover:text-bright-yellow transition-colors duration-300">${p.title}</h3>
                     </div>
                     <p class="text-sm text-stone-500 dark:text-stone-400 leading-relaxed">${p.summary}</p>
                     <div class="flex flex-wrap gap-2 pt-4">
                          ${p.details && p.details.team.tools ? p.details.team.tools.split(',').map(t => `<span class="px-2 py-1 border border-stone-200 dark:border-stone-800 text-[10px] uppercase tracking-wider text-stone-500 dark:text-stone-400">${t.trim()}</span>`).join('') : ''}
                     </div>
                     <div class="pt-4">
-                        <span class="text-xs font-bold underline underline-offset-4 decoration-stone-300 dark:decoration-stone-700 group-hover:decoration-[var(--theme-accent)] text-stone-900 dark:text-stone-300 transition-all">View Case Study</span>
+                        <span class="text-xs font-bold underline underline-offset-4 decoration-stone-300 dark:decoration-stone-700 group-hover:decoration-retro-red dark:group-hover:decoration-bright-yellow text-stone-900 dark:text-stone-300 transition-all">View Case Study</span>
                     </div>
                 </div>
             </div>`;
@@ -516,13 +516,13 @@ function renderExperiments() {
                             <div class="aspect-square bg-stone-50 dark:bg-stone-900 border border-stone-100 dark:border-stone-800 mb-8 relative overflow-hidden">
                                 <img src="${p.heroImage}" class="w-full h-full object-cover grayscale opacity-80 dark:opacity-60" />
                                 <div class="placeholder-overlay">
-                                    <span class="text-[var(--theme-accent)] mb-2">[ REPLACE ME ]</span>
+                                    <span class="text-theme-accent mb-2">[ REPLACE ME ]</span>
                                     <span class="font-bold text-stone-600 dark:text-stone-400">${p.title} Visual</span>
                                 </div>
                             </div>
                             <div class="space-y-2">
                                 <div class="flex justify-between items-baseline">
-                                    <h3 class="text-2xl font-bold text-stone-900 dark:text-stone-100 group-hover:text-[var(--theme-accent)] transition-colors">${p.title}</h3>
+                                    <h3 class="text-2xl font-bold text-stone-900 dark:text-stone-100 group-hover:text-retro-red dark:group-hover:text-bright-yellow transition-colors">${p.title}</h3>
                                     <span class="text-[10px] font-bold uppercase text-stone-400 tracking-widest">${p.category}</span>
                                 </div>
                                 <p class="text-sm text-stone-500 dark:text-stone-400 leading-relaxed">${p.summary}</p>
@@ -544,7 +544,7 @@ function renderAbout() {
                     <div class="md:col-span-5 relative">
                         <div class="aspect-[3/4] bg-stone-100 dark:bg-stone-900 relative">
                            <img src="https://placehold.co/400x600/f5f5f4/d6d3d1?text=Profile+Photo" class="w-full h-full object-cover grayscale" />
-                           <div class="placeholder-overlay"><span class="text-[var(--theme-accent)] mb-2">[ REPLACE ME ]</span><span class="font-bold text-stone-600 dark:text-stone-400">Portrait</span></div>
+                           <div class="placeholder-overlay"><span class="text-theme-accent mb-2">[ REPLACE ME ]</span><span class="font-bold text-stone-600 dark:text-stone-400">Portrait</span></div>
                         </div>
                         <div class="mt-8">
                             <a href="/resume.pdf" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 border border-stone-200 dark:border-stone-800 text-xs font-bold uppercase tracking-widest text-stone-500 dark:text-stone-400 hover:bg-stone-900 hover:text-white dark:hover:bg-stone-100 dark:hover:text-stone-900 transition-all">
@@ -559,7 +559,7 @@ function renderAbout() {
                         </div>
                         <div class="grid grid-cols-2 gap-8 pt-8 border-t border-stone-100 dark:border-stone-800">
                            <div><h4 class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-4">Education</h4><p class="text-sm font-bold text-stone-900 dark:text-stone-200">Cornell University</p><p class="text-xs text-stone-500 dark:text-stone-400 mt-1">MPS in Information Science</p></div>
-                           <div><h4 class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-4">Connect</h4><div class="flex flex-col gap-2"><a href="#" class="text-sm text-stone-500 dark:text-stone-400 hover:text-[var(--theme-accent)] transition-colors">Email Me</a><a href="#" class="text-sm text-stone-500 dark:text-stone-400 hover:text-[var(--theme-accent)] transition-colors">LinkedIn</a></div></div>
+                           <div><h4 class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-4">Connect</h4><div class="flex flex-col gap-2"><a href="#" class="text-sm text-stone-500 dark:text-stone-400 hover:text-retro-red dark:hover:text-bright-yellow transition-colors">Email Me</a><a href="#" class="text-sm text-stone-500 dark:text-stone-400 hover:text-retro-red dark:hover:text-bright-yellow transition-colors">LinkedIn</a></div></div>
                         </div>
                     </div>
                 </div>
@@ -571,7 +571,7 @@ function renderCompetitiveAnalysis(ca) {
     const chartPoints = ca.positioning.chartData.map(p => {
         const left = p.x + 50;
         const bottom = p.y + 50;
-        const colorClass = p.isOurs ? 'bg-[var(--theme-accent)] scale-125 z-10 ring-4 ring-white/50 dark:ring-black/50' : 'bg-stone-400';
+        const colorClass = p.isOurs ? 'bg-theme-accent scale-125 z-10 ring-4 ring-white/50 dark:ring-black/50' : 'bg-stone-400';
         return `<div class="absolute w-3 h-3 rounded-full ${colorClass} transform -translate-x-1/2 -translate-y-1/2 group hover:scale-150 transition-transform cursor-help" style="left: ${left}%; bottom: ${bottom}%;" title="${p.label}">
                     <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-stone-900 text-white text-[10px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">${p.label}</span>
                 </div>`;
@@ -584,9 +584,9 @@ function renderCompetitiveAnalysis(ca) {
                     <p class="text-stone-500 dark:text-stone-400 text-lg font-light">Strategic positioning and market research.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-                    <div class="p-6 border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900"><h4 class="text-[10px] font-bold uppercase tracking-widest text-[var(--theme-accent)] mb-2">Genre</h4><p class="text-stone-900 dark:text-stone-200 font-medium text-sm">${ca.intro.Genre}</p></div>
-                    <div class="p-6 border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900"><h4 class="text-[10px] font-bold uppercase tracking-widest text-[var(--theme-accent)] mb-2">Target Audience</h4><p class="text-stone-900 dark:text-stone-200 font-medium text-sm">${ca.intro.Target}</p></div>
-                    <div class="p-6 border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900"><h4 class="text-[10px] font-bold uppercase tracking-widest text-[var(--theme-accent)] mb-2">Unique Selling Point</h4><p class="text-stone-900 dark:text-stone-200 font-medium text-sm">${ca.intro.USP}</p></div>
+                    <div class="p-6 border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900"><h4 class="text-[10px] font-bold uppercase tracking-widest text-theme-accent mb-2">Genre</h4><p class="text-stone-900 dark:text-stone-200 font-medium text-sm">${ca.intro.Genre}</p></div>
+                    <div class="p-6 border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900"><h4 class="text-[10px] font-bold uppercase tracking-widest text-theme-accent mb-2">Target Audience</h4><p class="text-stone-900 dark:text-stone-200 font-medium text-sm">${ca.intro.Target}</p></div>
+                    <div class="p-6 border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900"><h4 class="text-[10px] font-bold uppercase tracking-widest text-theme-accent mb-2">Unique Selling Point</h4><p class="text-stone-900 dark:text-stone-200 font-medium text-sm">${ca.intro.USP}</p></div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 mb-24 items-center">
                     <div>
@@ -605,7 +605,7 @@ function renderCompetitiveAnalysis(ca) {
                     <h3 class="text-xl font-bold text-stone-900 dark:text-stone-100 mb-8">02. Key Competitors</h3>
                     <div class="grid md:grid-cols-3 gap-8">
                         ${ca.competitors.map(comp => `
-                            <div class="p-6 border border-stone-100 dark:border-stone-800 hover:border-[var(--theme-accent)] transition-colors group">
+                            <div class="p-6 border border-stone-100 dark:border-stone-800 hover:border-retro-red dark:hover:border-bright-yellow transition-colors group">
                                 <div class="flex justify-between items-start mb-3">
                                     <h4 class="font-bold text-stone-900 dark:text-stone-100">${comp.name}</h4>
                                     <span class="text-[10px] bg-stone-100 dark:bg-stone-800 px-2 py-1 text-stone-500 dark:text-stone-400 rounded">${comp.type}</span>
@@ -620,10 +620,10 @@ function renderCompetitiveAnalysis(ca) {
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left">
                             <thead class="text-xs text-stone-400 uppercase bg-stone-50 dark:bg-stone-900">
-                                <tr><th class="px-6 py-3">Feature</th><th class="px-6 py-3 text-[var(--theme-accent)]">Our Game</th><th class="px-6 py-3">Competitor Standard</th></tr>
+                                <tr><th class="px-6 py-3">Feature</th><th class="px-6 py-3 text-theme-accent">Our Game</th><th class="px-6 py-3">Competitor Standard</th></tr>
                             </thead>
                             <tbody class="divide-y divide-stone-100 dark:divide-stone-800 border-b border-stone-100 dark:border-stone-800">
-                                ${ca.matrix.map(row => `<tr class="hover:bg-stone-50 dark:hover:bg-stone-900"><td class="px-6 py-4 font-bold text-stone-900 dark:text-stone-100">${row.feature}</td><td class="px-6 py-4 font-medium text-[var(--theme-accent)]">${row.ours}</td><td class="px-6 py-4 text-stone-500 dark:text-stone-400">${row.comp}</td></tr>`).join('')}
+                                ${ca.matrix.map(row => `<tr class="hover:bg-stone-50 dark:hover:bg-stone-900"><td class="px-6 py-4 font-bold text-stone-900 dark:text-stone-100">${row.feature}</td><td class="px-6 py-4 font-medium text-theme-accent">${row.ours}</td><td class="px-6 py-4 text-stone-500 dark:text-stone-400">${row.comp}</td></tr>`).join('')}
                             </tbody>
                         </table>
                     </div>
@@ -775,14 +775,14 @@ const router = {
 
         // Update Nav State: Use dynamic classes
         document.querySelectorAll('.nav-btn').forEach(el => {
-            el.classList.remove('text-stone-900', 'dark:text-stone-100', 'border-b-2', 'border-[var(--theme-accent)]');
+            el.classList.remove('text-stone-900', 'dark:text-stone-100', 'border-b-2', 'border-theme-accent');
             el.classList.add('text-stone-400', 'dark:text-stone-500');
         });
 
         const activeBtn = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
         if (activeBtn) {
             activeBtn.classList.remove('text-stone-400', 'dark:text-stone-500');
-            activeBtn.classList.add('text-stone-900', 'dark:text-stone-100', 'border-b-2', 'border-[var(--theme-accent)]');
+            activeBtn.classList.add('text-stone-900', 'dark:text-stone-100', 'border-b-2', 'border-theme-accent');
         }
 
         const root = document.getElementById('app-root');
