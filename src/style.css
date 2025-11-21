@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- 自定义样式 --- */
+:root {
+    --retro-red: #8C1007;
+    --bright-yellow: #E7B10A;
+    --theme-accent: var(--retro-red); 
+    --selection-bg: var(--bright-yellow);
+    --selection-text: #000000;
+}
+
+.dark {
+    --theme-accent: var(--bright-yellow);
+    --selection-bg: var(--retro-red);
+    --selection-text: #ffffff;
+}
+
+body, nav, footer, .project-card, button, a, span, div, i, svg {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease;
+}
+
+::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+}
+
+/* 动画 */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(40px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.animate-fade-up {
+    animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.click-particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes pop-day {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    20% { transform: scale(1.2) rotate(var(--rot)); opacity: 1; }
+    100% { transform: translateY(-40px) rotate(var(--rot)); opacity: 0; }
+}
+
+@keyframes fall-night {
+    0% { transform: translateY(-10px) scale(0.5) rotate(0deg); opacity: 0; }
+    20% { transform: translateY(0) scale(1.2) rotate(var(--rot)); opacity: 1; }
+    100% { transform: translateY(60px) scale(0.8) rotate(var(--rot)); opacity: 0; }
+}
+
+.chart-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, #e7e5e4 1px, transparent 1px), linear-gradient(to bottom, #e7e5e4 1px, transparent 1px);
+}
+.dark .chart-grid {
+    background-image: linear-gradient(to right, #292524 1px, transparent 1px), linear-gradient(to bottom, #292524 1px, transparent 1px);
+}
+
+.placeholder-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(245, 245, 244, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #d6d3d1;
+    color: #a8a29e;
+    font-family: monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 1rem;
+    transition: opacity 0.5s ease;
+}
+.dark .placeholder-overlay {
+    background: rgba(28, 25, 23, 0.95);
+    border-color: #44403c;
+    color: #78716c;
+}
+.project-card:hover .placeholder-overlay { opacity: 0; }
+.project-card img { transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), grayscale 0.5s ease; }
+.project-card:hover img { transform: scale(1.03); grayscale: 0%; }
+
+.color-cycle-text { transition: color 1.5s ease; }
