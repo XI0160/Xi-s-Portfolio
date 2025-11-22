@@ -14,7 +14,9 @@
         <div class="text-xl font-bold text-stone-900 dark:text-stone-100 cursor-pointer tracking-tight hover:text-retro-red dark:hover:text-bright-yellow transition-colors" id="nav-logo">
             Xi Lin<span class="text-theme-accent">.</span>
         </div>
-        <div class="flex items-center gap-6 md:gap-10 text-xs font-bold uppercase tracking-widest text-stone-400 dark:text-stone-500">
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-10 text-xs font-bold uppercase tracking-widest text-stone-400 dark:text-stone-500">
             <button class="nav-btn hover:text-retro-red dark:hover:text-bright-yellow transition-colors" data-page="work">Work</button>
             <button class="nav-btn hover:text-retro-red dark:hover:text-bright-yellow transition-colors" data-page="experiments">Experiments</button>
             <button class="nav-btn hover:text-retro-red dark:hover:text-bright-yellow transition-colors" data-page="about">About</button>
@@ -25,12 +27,43 @@
                 Resume
             </a>
 
-            <button id="theme-toggle" class="text-stone-400 hover:text-retro-red dark:hover:text-bright-yellow transition-colors focus:outline-none ml-2">
+            <button class="theme-toggle-btn text-stone-400 hover:text-retro-red dark:hover:text-bright-yellow transition-colors focus:outline-none ml-2">
                 <span class="dark:hidden"><i data-lucide="moon" class="w-4 h-4"></i></span>
                 <span class="hidden dark:block"><i data-lucide="sun" class="w-4 h-4"></i></span>
             </button>
         </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-stone-900 dark:text-stone-100 hover:text-retro-red dark:hover:text-bright-yellow transition-colors">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
     </nav>
+
+    <!-- Mobile Menu Overlay (Moved outside nav to avoid stacking context issues) -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-white dark:bg-stone-950 opacity-0 pointer-events-none transition-opacity duration-300">
+        <!-- Close Button -->
+        <button id="close-menu-btn" class="absolute top-8 right-6 z-20 text-stone-900 dark:text-stone-100 hover:text-retro-red dark:hover:text-bright-yellow transition-colors">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <!-- Scrollable Content Container -->
+        <div class="absolute inset-0 overflow-y-auto">
+            <div class="min-h-full flex flex-col items-center justify-center gap-8 py-24">
+                <button class="nav-btn mobile-nav-link text-lg font-bold uppercase tracking-widest text-stone-900 dark:text-stone-100 hover:text-retro-red dark:hover:text-bright-yellow transition-colors" data-page="work">Work</button>
+                <button class="nav-btn mobile-nav-link text-lg font-bold uppercase tracking-widest text-stone-900 dark:text-stone-100 hover:text-retro-red dark:hover:text-bright-yellow transition-colors" data-page="experiments">Experiments</button>
+                <button class="nav-btn mobile-nav-link text-lg font-bold uppercase tracking-widest text-stone-900 dark:text-stone-100 hover:text-retro-red dark:hover:text-bright-yellow transition-colors" data-page="about">About</button>
+                
+                <a href="/resume.pdf" target="_blank" class="px-6 py-2 border border-stone-200 dark:border-stone-800 rounded-full text-xs font-bold uppercase tracking-widest text-stone-400 dark:text-stone-500 hover:text-retro-red dark:hover:text-bright-yellow hover:border-retro-red dark:hover:border-bright-yellow transition-all">
+                    Resume
+                </a>
+
+                <button class="theme-toggle-btn text-stone-400 hover:text-retro-red dark:hover:text-bright-yellow transition-colors focus:outline-none mt-2">
+                    <span class="dark:hidden flex items-center gap-2 text-xs font-bold uppercase tracking-widest"><i data-lucide="moon" class="w-5 h-5"></i> Dark Mode</span>
+                    <span class="hidden dark:flex items-center gap-2 text-xs font-bold uppercase tracking-widest"><i data-lucide="sun" class="w-5 h-5"></i> Light Mode</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <main id="app-root" class="flex-grow pt-32 relative"></main>
 

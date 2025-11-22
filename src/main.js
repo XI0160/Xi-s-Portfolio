@@ -549,8 +549,38 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.onclick = () => router.navigate(btn.dataset.page);
     });
     
-    const themeToggle = document.getElementById('theme-toggle');
-    if(themeToggle) themeToggle.onclick = toggleTheme;
+    // Theme Toggle (Desktop & Mobile)
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+        btn.onclick = toggleTheme;
+    });
+
+    // Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    const toggleMenu = () => {
+        const isHidden = mobileMenu.classList.contains('opacity-0');
+        if (isHidden) {
+            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+            mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+    };
+
+    if (mobileMenuBtn) mobileMenuBtn.onclick = toggleMenu;
+    if (closeMenuBtn) closeMenuBtn.onclick = toggleMenu;
+    
+    // Close menu when clicking a link
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+             mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+             mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        });
+    });
 
     // Start App
     router.navigate('home');
